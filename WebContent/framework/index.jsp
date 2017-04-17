@@ -8,12 +8,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>XXXX管理平台</title>
-	<link rel="stylesheet" type="text/css" href="css/easyui/css/default.css" />
-	<link rel="stylesheet" type="text/css" href="js/easyui/js/themes/gray/easyui.css" />
-    <link rel="stylesheet" type="text/css" href="js/easyui/js/themes/icon.css" />
-    <script type="text/javascript" src="js/easyui/js/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" src="js/easyui/js/jQuery.easyui.js"></script>
-	<script type="text/javascript" src='js/easyui/js/outlook2.js'> </script>
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/easyui/css/default.css" />
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>js/easyui/js/themes/gray/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>js/easyui/js/themes/icon.css" />
+    <script type="text/javascript" src="<%=basePath%>js/easyui/js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>js/easyui/js/jQuery.easyui.js"></script>
+	<script type="text/javascript" src='<%=basePath%>js/easyui/js/outlook2.js'> </script>
 	<style type="text/css">
 		.comeback{display:block; float:left; margin-left:10px;}
 	</style>
@@ -66,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body class="easyui-layout" style="overflow-y: hidden"  scroll="no">
 	<noscript> <!--元素用来定义在脚本未被执行时的替代内容-->
 		<div style=" position:absolute; z-index:100000; height:2046px;top:0px;left:0px; width:100%; background:white; text-align:center;">
-			<img src="images/easyui/images/noscript.gif" alt='抱歉，请开启脚本支持！' />
+			<img src="<%=basePath%>images/easyui/images/noscript.gif" alt='抱歉，请开启脚本支持！' />
 		</div>
 	</noscript>
 	
@@ -77,7 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a href="#" id="editpass" class="comeback">修改密码</a> 
 			<a href="#" id="loginOut" class="comeback">安全退出</a>
 		</div>
-        <span style="padding-left:10px; font-size: 16px;"><img src="images/easyui/images/blocks.gif" width="20" height="20" align="absmiddle" />一看就特别牛B的公司</span>
+        <span style="padding-left:10px; font-size: 16px;"><img src="<%=basePath%>images/easyui/images/blocks.gif" width="20" height="20" align="absmiddle" />一看就特别牛B的公司</span>
     </div>
 	
 	<!--底部-->

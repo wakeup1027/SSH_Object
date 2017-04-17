@@ -41,16 +41,17 @@ public class LoginFilter implements Filter {
 		HttpServletRequest servletRequest = (HttpServletRequest) request;
 		HttpServletResponse servletResponse = (HttpServletResponse) response;
 		HttpSession session = servletRequest.getSession();
+		session.setAttribute("UserName", "admin");
 		String userName = (String) session.getAttribute("UserName");
 		if("".equals(userName)||"null".equals(userName)||userName==null){
 			System.out.println("还没有登录");
 		}
 		// 获得用户请求的URI
 		String path = servletRequest.getRequestURI();
-		if(path.indexOf("/framework/index.jsp")>-1){
+		/*if(path.indexOf("/framework/index.jsp")>-1){
 			servletResponse.sendRedirect("/SSH_Object/index.jsp");
 			return;
-		}
+		}*/
 		chain.doFilter(request, response);
 	}
 
