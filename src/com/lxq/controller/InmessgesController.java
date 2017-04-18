@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lxq.beans.Inmessges;
+import com.lxq.beans.LifeMotto;
 import com.lxq.service.InmessgesService;
 
 @Controller
@@ -36,6 +37,17 @@ public class InmessgesController {
 		user.setId(id);
 		int i = userser.delete(user);
 		if(i==1)map.put("addRes", "数据删除成功！");else map.put("addRes", "数据删除失败！");
+		return map;
+	}
+	
+	@RequestMapping(value = "/getlist.action", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String,Object> getlist(){
+		Map<String,Object> map = new HashMap<String,Object>();
+		Inmessges InmesList = userser.list();
+		LifeMotto MottoList = userser.listMotto();
+		map.put("InmesList",InmesList);
+		map.put("MottoList",MottoList);
 		return map;
 	}
 }

@@ -13,6 +13,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="css/responsive.css"/>
 	<link href='images/favicon.ico' rel='icon' type='image/x-icon'/>
+	<script src="<%=basePath%>js/jquery-1.8.3.min.js"></script>
+	<script>
+		$(function(){
+			$.post("<%=basePath%>framework/user/getlist.action",{suggest:"你好"},function(res){
+			    console.log(res);
+			    var mottoInfo = res.MottoList;
+			    $("#myMottoTitle").text(mottoInfo.title);
+			    $("#myMottoText").text(mottoInfo.text);
+			    $("#myMottoCrenTime").text(mottoInfo.creantime);
+			});			
+		});
+	</script>
 </head>
 <body>
 <div class="wrap-body zerogrid">
@@ -65,15 +77,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="wrap-col">
 					<article>
 						<div class="heading">
-							<h2><a href="#">Sed accumsan libero quis mi commodo et suscipit</a></h2>
+							<h2><a href="javascript:void(0);" id="myMottoTitle">Sed accumsan libero quis mi commodo et suscipit</a></h2>
 						</div>
 						<div class="content">
 							<img src="images/img1.jpg" width="250px" height="100px"/>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra convallis auctor. Sed accumsan libero quis mi commodo et suscipit enim lacinia. Morbi rutrum vulputate est sed faucibus. Nulla sed nisl mauris, id tristique tortor. Sed iaculis dapibus urna nec dictum. Morbi rutrum vulputate est sed faucibus. Nulla sed nisl mauris, id tristique tortor. Sed iaculis dapibus urna nec dictum [...]</p>
-		
+							<p id="myMottoText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra convallis auctor. Sed accumsan libero quis mi commodo et suscipit enim lacinia. Morbi rutrum vulputate est sed faucibus. Nulla sed nisl mauris, id tristique tortor. Sed iaculis dapibus urna nec dictum. Morbi rutrum vulputate est sed faucibus. Nulla sed nisl mauris, id tristique tortor. Sed iaculis dapibus urna nec dictum [...]</p>
 						</div>
 						<div class="info">
-							<p>By Admin on December 01, 2012 - <a href="#">01 Commnets</a></p>
+							<p>By LXQ on <a href="javascript:void(0);" id="myMottoCrenTime">01 Commnets</a></p>
 						</div>
 					</article>
 					<article>
