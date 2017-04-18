@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<div id="logo">
 			<img src="<%=basePath%>images/index_logo.png"/><h2 style="color:#fff;">Never underestimate your power to change yourself !</h2>
-		</div>
+		</div> 
 		
 		<nav>
 			<div class="wrap-nav">
