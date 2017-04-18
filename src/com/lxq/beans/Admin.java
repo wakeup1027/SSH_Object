@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name="T_ORDER")
+@Table(name="T_ADMIN")
 public class Admin {
 
 	@Id
@@ -22,10 +22,14 @@ public class Admin {
 	private String userName;
 	
 	@Column(length=32)
-	private String content;
+	private String password;
 
 	public String getId() {
 		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getUserName() {
@@ -36,17 +40,12 @@ public class Admin {
 		this.userName = userName;
 	}
 
-	public String getContent() {
-		return content;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-	
 	
 }
