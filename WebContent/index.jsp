@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <header>
 	<div class="wrap-header">
 		
-		<div class="top">
+		<!-- <div class="top">
 			<div class="socials">
 				<ul>
 					<li><a href="#" title="facebook"><img  src="images/socials/facebook-32x32.png"/></a></li>
@@ -32,9 +32,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div id="search">
 				<div class="button-search"></div>
-				<input type="text" value="Search..." onFocus="if (this.value == &#39;Search...&#39;) {this.value = &#39;&#39;;}" onBlur="if (this.value == &#39;&#39;) {this.value = &#39;Search...&#39;;}">
+				<input type="text" value="Search..." onFocus="if (this.value == &#39;Search...&#39;) {this.value = &#39;&#39;;}" onBlur="if (this.value == &#39;&#39;) {this.value = &#39;Search...&#39;;}"/>
 			</div>
-		</div>
+		</div> -->
 		
 		<div id="logo">
 			<h1>zSoodany</h1>

@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.lxq.beans.User;
-import com.lxq.service.UserService;
+import com.lxq.beans.Inmessges;
+import com.lxq.service.InmessgesService;
 
 @Controller
 @RequestMapping("/framework/user")
-public class UserController {
+public class InmessgesController {
 	@Autowired
-	private UserService userser;
+	private InmessgesService userser;
 	
 	@RequestMapping(value = "/add.action", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> add(User user){
+    public Map<String, Object> add(Inmessges user){
 		Map<String, Object> map = new HashMap<String, Object>();
 		int i = userser.addUser(user);
 		if(i==1)map.put("addRes", "数据增加成功！");else map.put("addRes", "数据增加失败！");
@@ -32,7 +32,7 @@ public class UserController {
     @ResponseBody
 	public Map<String, Object> delete(String id){
 		Map<String, Object> map = new HashMap<String, Object>();
-		User user  = new User();
+		Inmessges user  = new Inmessges();
 		user.setId(id);
 		int i = userser.delete(user);
 		if(i==1)map.put("addRes", "数据删除成功！");else map.put("addRes", "数据删除失败！");
