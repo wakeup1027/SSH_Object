@@ -10,7 +10,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="T_ORDER")
-public class Order {
+public class Admin {
 
 	@Id
 	@GeneratedValue(generator="system-uuid")
