@@ -33,15 +33,6 @@ public class Inmessges {
 	@Column(name = "major", length=15)
 	private String major;
 	
-	@Column(name = "mylike")
-	private String mylike;
-	
-	@Column(name = "technology")
-	private String technology;
-	
-	@Column(name = "introduction")
-	private String introduction;
-
 	public String getId() {
 		return id;
 	}
@@ -90,28 +81,4 @@ public class Inmessges {
 		this.major = major;
 	}
 
-	public String getMylike() {
-		return mylike;
-	}
-
-	public void setMylike(String mylike) {
-		this.mylike = mylike;
-	}
-
-	public String getTechnology() {
-		return technology;
-	}
-
-	public void setTechnology(String technology) {
-		this.technology = technology;
-	}
-
-	public String getIntroduction() {
-		return introduction;
-	}
-
-	public void setIntroduction(String introduction) {
-		this.introduction = introduction;
-	}
-	
 }

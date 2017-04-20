@@ -11,11 +11,12 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
- * 人生格言
+ * 我的简介
  */
+
 @Entity
-@Table(name="T_LIFEMOTTO")
-public class LifeMotto {
+@Table(name="T_MYINFO")
+public class myInfo {
 	
 	@Id
 	@GeneratedValue(generator="system-uuid")
@@ -63,5 +64,5 @@ public class LifeMotto {
 	public void setCreantime(Timestamp creantime) {
 		this.creantime = creantime;
 	}
-	
+
 }
