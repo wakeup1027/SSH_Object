@@ -1,6 +1,7 @@
 package com.lxq.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lxq.beans.Inmessges;
 import com.lxq.beans.LifeMotto;
+import com.lxq.beans.myExperience;
+import com.lxq.beans.myInfo;
+import com.lxq.beans.myLike;
+import com.lxq.beans.myMajor;
+import com.lxq.beans.myText;
 import com.lxq.service.InmessgesService;
 
 @Controller
@@ -46,8 +52,19 @@ public class InmessgesController {
 		Map<String,Object> map = new HashMap<String,Object>();
 		Inmessges InmesList = userser.list();
 		LifeMotto MottoList = userser.listMotto();
-		map.put("InmesList",InmesList);
-		map.put("MottoList",MottoList);
+		myExperience MyExperList = userser.listExper();
+		myInfo InfoList = userser.listMyinfo();
+		myLike  MyLikeList = userser.listLike();
+		List<myMajor> MyMajor = userser.listMajor();
+		List<myText> MyTextList = userser.listText();
+		
+		map.put("InmesList", InmesList); //获取我的信息
+		map.put("MottoList", MottoList); //获取人生格言
+		map.put("MyExperList", MyExperList); //获取人生经历
+		map.put("InfoList", InfoList); //获取简介
+		map.put("MyLikeList", MyLikeList); //获取兴趣爱好
+		map.put("MyMajor", MyMajor); //获取技能
+		map.put("MyTextList", MyTextList); //获取博文信息
 		return map;
 	}
 }

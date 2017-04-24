@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.lxq.beans.Inmessges;
 import com.lxq.beans.LifeMotto;
+import com.lxq.beans.myExperience;
 import com.lxq.beans.myInfo;
 import com.lxq.beans.myLike;
 import com.lxq.beans.myMajor;
@@ -23,8 +24,6 @@ public class InmessgesService {
 	
 	/**
 	 * 新增user
-	 * @param user
-	 * @return
 	 */
 	public int addUser(Inmessges user){
 		try {
@@ -37,8 +36,6 @@ public class InmessgesService {
 	
 	/**
 	 * 删除user
-	 * @param user
-	 * @return
 	 */
 	public int delete(Inmessges user){
 		try {
@@ -51,7 +48,6 @@ public class InmessgesService {
 	
 	/**
 	 * 获取全部的Inmessges数据表里面的信息
-	 * @return
 	 */
 	public Inmessges list(){
 		List<Inmessges> list = dao.find("FROM Inmessges");
@@ -60,7 +56,6 @@ public class InmessgesService {
 	
 	/**
 	 * 获取人生格言
-	 * @return
 	 */
 	public LifeMotto listMotto(){
 		List<LifeMotto> list = dao.find("FROM LifeMotto ORDER BY creantime DESC");
@@ -93,11 +88,18 @@ public class InmessgesService {
 	
 	/**
 	 * 我的博文链表
-	 * @return
 	 */
 	public List<myText> listText(){
-		List<myText> list = dao.find("FROM myMajor ORDER BY creantime DESC");
+		List<myText> list = dao.find("FROM myText ORDER BY creantime DESC");
 		return list;
+	}
+	
+	/**
+	 * 我的经历
+	 */
+	public myExperience listExper(){
+		List<myExperience> list = dao.find("FROM myExperience ORDER BY creantime DESC");
+		return list.get(0);
 	}
 	
 }

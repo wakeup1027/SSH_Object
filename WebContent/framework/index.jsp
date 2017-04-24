@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" type="text/css" href="<%=basePath%>js/easyui/js/themes/icon.css" />
     <script type="text/javascript" src="<%=basePath%>js/easyui/js/jquery-1.4.2.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>js/easyui/js/jQuery.easyui.js"></script>
-	<script type="text/javascript" src='<%=basePath%>js/easyui/js/outlook2.js'> </script>
+	<script type="text/javascript" src='<%=basePath%>js/easyui/js/outlook2.js'></script>
 	<style type="text/css">
 		.comeback{display:block; float:left; margin-left:10px;}
 	</style>
@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									{"menuname":"用户管理","icon":"icon-users","url":"demo2.html"},
 									{"menuname":"角色管理","icon":"icon-role","url":"demo2.html"},
 									{"menuname":"权限设置","icon":"icon-set","url":"demo.html"},
-									{"menuname":"系统日志","icon":"icon-log","url":"demo.html"}
+									{"menuname":"添加专业","icon":"icon-log","url":"<%=basePath%>framework/MyMajor.jsp"}
 								]
 						},{"menuid":"8","icon":"icon-sys","menuname":"员工管理",
 							"menus":[{"menuname":"员工列表","icon":"icon-nav","url":"demo.html"},

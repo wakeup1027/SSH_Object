@@ -82,7 +82,7 @@ h1 a:hover, h2 a:hover, h3 a:hover{color: #76D2C5; text-decoration: none;}
 header {}
 header .wrap-header{}
 
-header #logo {background:#76D2C5; width: 100%; text-align: center; padding: 40px 0px; color : #ffffff; }
+header #logo {background:#56acdf; width: 100%; text-align: center; padding: 40px 0px; color : #ffffff; }
 header #logo h1{font-size: 60px; line-height: 80px; color: #ffffff;}
 
 header .top {height: 40px;}
@@ -96,7 +96,7 @@ header .top .socials ul li {position: relative;float: left; margin: 5px 0 5px 5p
 /* -------------------------------------------- */
 /* ------------------Navigation---------------- */
 nav {}
-nav .wrap-nav{display: inline-block; background: #91DBD1; width: 100%;}
+nav .wrap-nav{display: inline-block; background:#9dd6f8; width: 100%;}
 
 .menu ul {list-style: none;margin: 0;padding: 0;}
 .menu  ul li {position: relative;float: left;padding: 6px 5px 0px 5px;}
@@ -171,7 +171,7 @@ nav .wrap-nav{display: inline-block; background: #91DBD1; width: 100%;}
 
 /* -------------------------------------------- */
 /* ------------------Footer-------------------- */
-footer {background-color:#76D2C5; margin-top:30px;}
+footer {background-color:#56acdf; margin-top:30px;}
 footer .wrap-footer{padding:10px 0px; color:#ffffff;}
 footer .box {}
 footer .box .heading { padding:5px; border-bottom:1px solid #ffffff;}
@@ -182,5 +182,5 @@ footer .box .content p{margin-bottom: 10px;}
 footer .box .gallery {}
 footer .box .gallery img{padding:3px; background: #ffffff; margin: 0 5px 5px 0;}
 
-.copyright{text-align:center; margin-top:20px; background:#91DBD1; padding:10px 0px;color:#ffffff; }
+.copyright{text-align:center; margin-top:20px; background:#9dd6f8; padding:10px 0px;color:#ffffff; }
 .copyright a{text-decoration:underline; color:#ffffff; }
