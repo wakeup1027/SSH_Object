@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	function saveBean(){
 		var majorName = $("#majorName").textbox("getValue");
-		$.post("<%=basePath%>framework/admin/add.action",{majorName:majorName},function(res,stutas){
+		$.post("<%=basePath%>framework/admin/addMajor.action",{majorName:majorName},function(res,stutas){
 			if(res==1){
 				$.messager.alert('操作提示', "新增成功！", 'info');
 				$('#dlg').dialog('close');
@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 			idstr = idstr.substring(0,idstr.length-1);
 		}
-		$.post("<%=basePath%>framework/admin/delet.action",{idstr:idstr},function(res,stutas){
+		$.post("<%=basePath%>framework/admin/deletMajor.action",{idstr:idstr},function(res,stutas){
 			if(res==1){
 				$.messager.alert('操作提示', "删除成功！", 'info');
 				$('#dg').datagrid('reload');

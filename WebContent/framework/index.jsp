@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript">
 	 var _menus = {"menus":[
 						{"menuid":"1","icon":"icon-sys","menuname":"系统管理",
-							"menus":[{"menuname":"菜单管理","icon":"icon-nav","url":"http://www.16sucai.com"},
+							"menus":[{"menuname":"人生格言","icon":"icon-nav","url":"<%=basePath%>framework/LifeMotto.jsp"},
 									{"menuname":"添加用户","icon":"icon-add","url":"demo.html"},
 									{"menuname":"用户管理","icon":"icon-users","url":"demo2.html"},
 									{"menuname":"角色管理","icon":"icon-role","url":"demo2.html"},
