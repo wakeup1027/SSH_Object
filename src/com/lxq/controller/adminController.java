@@ -100,7 +100,7 @@ public class adminController {
 		for(String ids : idstrCh){
 			myMajor mmjc = new myMajor();
 			mmjc.setId(ids);
-			mmjor.add(mmjc);
+			mmjor.add(mmjc); 
 		}
 		try{
 			admins.delet(mmjor);
