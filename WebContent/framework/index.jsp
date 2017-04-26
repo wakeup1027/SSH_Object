@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>XXXX管理平台</title>
+	<title>XXXX管理平台</title> 
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/easyui/css/default.css" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>js/easyui/js/themes/gray/easyui.css" />
     <link rel="stylesheet" type="text/css" href="<%=basePath%>js/easyui/js/themes/icon.css" />
