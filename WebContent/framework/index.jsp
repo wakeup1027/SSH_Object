@@ -21,10 +21,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 var _menus = {"menus":[
 						{"menuid":"1","icon":"icon-sys","menuname":"系统管理",
 							"menus":[{"menuname":"人生格言","icon":"icon-nav","url":"<%=basePath%>framework/LifeMotto.jsp"},
-									{"menuname":"添加用户","icon":"icon-add","url":"demo.html"},
-									{"menuname":"用户管理","icon":"icon-users","url":"demo2.html"},
-									{"menuname":"角色管理","icon":"icon-role","url":"demo2.html"},
-									{"menuname":"权限设置","icon":"icon-set","url":"demo.html"},
+									{"menuname":"我的经历","icon":"icon-add","url":"<%=basePath%>framework/MyExperien.jsp"},
+									{"menuname":"兴趣爱好","icon":"icon-users","url":"<%=basePath%>framework/MyLike.jsp"},
+									{"menuname":"我的博文","icon":"icon-role","url":"<%=basePath%>framework/MyText.jsp"},
+									{"menuname":"个人简介","icon":"icon-pen","url":"demo.html"},
+									{"menuname":"关于自己","icon":"icon-set","url":"<%=basePath%>framework/MyInfo.jsp"},
 									{"menuname":"添加专业","icon":"icon-log","url":"<%=basePath%>framework/MyMajor.jsp"}
 								]
 						},{"menuid":"8","icon":"icon-sys","menuname":"员工管理",

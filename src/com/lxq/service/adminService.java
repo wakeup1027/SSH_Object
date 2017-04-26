@@ -10,7 +10,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.lxq.beans.LifeMotto; 
+import com.lxq.beans.myExperience;
+import com.lxq.beans.myInfo;
+import com.lxq.beans.myLike;
 import com.lxq.beans.myMajor;
+import com.lxq.beans.myText;
 import com.lxq.dao.Dao;
 
 @Service
@@ -65,6 +69,58 @@ public class adminService<T> {
 		String hql = "FROM LifeMotto";
 		List<LifeMotto> orders = this.dao.findByPage(hql, Integer.valueOf(page), Integer.valueOf(rows));
 		Long total = this.dao.count(LifeMotto.class,hql);
+		map.put("rows", orders);
+	    map.put("total", total);
+	    return map;
+	}
+	
+	/**
+	 * 获取“我的经历”
+	 */
+	public Map<String, Object> showsExperien(int page, int rows){
+		Map<String, Object> map = new HashMap<String, Object>();
+		String hql = "FROM myExperience";
+		List<myExperience> orders = this.dao.findByPage(hql, Integer.valueOf(page), Integer.valueOf(rows));
+		Long total = this.dao.count(myExperience.class,hql);
+		map.put("rows", orders);
+	    map.put("total", total);
+	    return map;
+	}
+	
+	/**
+	 * 获取“兴趣爱好”
+	 */
+	public Map<String, Object> showsMyLike(int page, int rows){
+		Map<String, Object> map = new HashMap<String, Object>();
+		String hql = "FROM myLike";
+		List<myLike> orders = this.dao.findByPage(hql, Integer.valueOf(page), Integer.valueOf(rows));
+		Long total = this.dao.count(myLike.class,hql);
+		map.put("rows", orders);
+	    map.put("total", total);
+	    return map;
+	}
+	
+	/**
+	 * 获取“我的博文”
+	 */
+	public Map<String, Object> showsMyText(int page, int rows){
+		Map<String, Object> map = new HashMap<String, Object>();
+		String hql = "FROM myText";
+		List<myText> orders = this.dao.findByPage(hql, Integer.valueOf(page), Integer.valueOf(rows));
+		Long total = this.dao.count(myText.class,hql);
+		map.put("rows", orders);
+	    map.put("total", total);
+	    return map;
+	}
+	
+	/**
+	 * 获取“关于自己”
+	 */
+	public Map<String, Object> showsMyInfo(int page, int rows){
+		Map<String, Object> map = new HashMap<String, Object>();
+		String hql = "FROM myInfo";
+		List<myInfo> orders = this.dao.findByPage(hql, Integer.valueOf(page), Integer.valueOf(rows));
+		Long total = this.dao.count(myInfo.class,hql);
 		map.put("rows", orders);
 	    map.put("total", total);
 	    return map;
