@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    
 			    var myText = res.MyTextList;
 			    for(var i=0; i<myText.length; i++){
-			    	var divBox = '<div class="post"><img src="<%=basePath%>'+myText[i].imgPath+'" width="50px"/><h4><a href="<%=basePath%>admin.jsp?id='+myText[i].id+'">'+myText[i].title+'</a></h4><p>'+fotmateDate(myText[i].creantime)+'</p></div>';
+			    	var divBox = '<div class="post"><img src="<%=basePath%>'+myText[i].imgPath+'" width="50px"/><h4><a href="<%=basePath%>admin.jsp?id='+myText[i].id+'" target="_blank">'+myText[i].title+'</a></h4><p>'+fotmateDate(myText[i].creantime)+'</p></div>';
 			    	$("#contentBlog").append(divBox);
 			    }
 			    
@@ -92,11 +92,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="wrap-nav">
 				<div class="menu">
 					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="blog.html">Blog</a></li>
-						<li><a href="blog.html">Gallery</a></li>
-						<li><a href="blog.html">About</a></li>
-						<li><a href="#">Contact</a></li>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">Major</a></li>
+						<li><a href="#">LeftMotto</a></li>
+						<li><a href="#">Experience</a></li>
 					</ul>
 				</div>
 			</div>

@@ -20,7 +20,7 @@ public class myMajor {
 	@Column(name = "id", length=32)
 	private String id;
 	
-	@Column(name = "majorName", length=10)
+	@Column(name = "majorName", length=50)
 	private String majorName;
 
 	public String getId() {

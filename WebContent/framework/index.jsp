@@ -58,10 +58,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     }
                 });
             })
-			
+            
 			//默认3秒后删除“欢迎使用”的tab标签
-			var t=setTimeout("$('#tabs').tabs('close','欢迎使用')",3000);
+            var num = parseInt(2);
+            timer(num);
         });
+        
+        function timer(intDiff){
+        	var ss = window.setInterval(function(){
+        		if(intDiff>=1){
+        			$(".tabs-inner span").text("欢迎使用("+intDiff+")");
+            	    intDiff--;
+        		}else{
+        			clearInterval(ss);
+        			//var t=setTimeout("",3000);
+        			$('#tabs').tabs('close','欢迎使用')
+        		}
+        	}, 1000);
+        }
     </script>
 </head>
 <body class="easyui-layout" style="overflow-y: hidden"  scroll="no">
@@ -96,7 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--主页面-->
     <div id="mainPanle" region="center" style="background: #eee; overflow-y:hidden">
         <div id="tabs" class="easyui-tabs"  fit="true" border="false" >
-			<div title="欢迎使用" style="padding:20px;overflow:hidden;" id="home">
+			<div id="FirstTitle" title="欢迎使用(3)" style="padding:20px;overflow:hidden;" id="home">
 
 			<h1>Welcome to jQuery UI!</h1>
 
