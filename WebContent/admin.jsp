@@ -50,7 +50,7 @@ String id = request.getParameter("id");
 				 } 
 				 return format;  
 		}
-	</script>
+	</script>  
 </head>
 <body style="background-color:#999999;">
 	<div style="background: #ffffff;  margin: 30px auto;  padding: 30px; width:960px;">
