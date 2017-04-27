@@ -12,6 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css"href="<%=basePath%>easyui/themes/icon.css"/>
 	<link rel="stylesheet" type="text/css"href="<%=basePath%>easyui/themes/gray/datagrid.css"/>
 	<script type="text/javascript" src="<%=basePath%>easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="<%=basePath%>js/jquery.form.js"></script>
 	<script type="text/javascript" src="<%=basePath%>easyui/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="<%=basePath %>easyui/locale/easyui-lang-zh_CN.js"></script>
 	<style>
@@ -51,18 +52,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$("#majorText").textbox("setValue","");
 		$("#majorName").textbox("setValue","");
 		$('#dlg').dialog('open').dialog('setTitle','');
-	}
-	
-	function saveBean(){
-		var majorText = $("#majorText").textbox("getValue");
-		var majorName = $("#majorName").textbox("getValue");
-		$.post("<%=basePath%>framework/admin/addMyText.action",{title:majorName,text:majorText},function(res,stutas){
-			if(res==1){
-				$.messager.alert('操作提示', "数据保存成功！", 'info');
-				$('#dlg').dialog('close');
-				$('#dg').datagrid('reload');
-			}
-		});
 	}
 	
 	function dele(){
@@ -116,6 +105,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			 } 
 			 return format;  
 	}
+	
+	function submitForm(){
+		if(checkData()){
+ 			$('#importfm').ajaxSubmit({  
+ 				url: '<%=basePath%>framework/admin/addMyText.action',
+ 				dataType: 'text',
+ 				beforeSend:function(){$("#loadBox").show();},
+				complete:function(){$("#loadBox").hide();},
+ 				success: resutlMsg,
+ 				error: errorMsg
+ 			}); 
+ 			function resutlMsg(msg){
+ 				if(msg==1){
+	       			$('#dlg').dialog('close');
+	           		$('#dg').datagrid('reload');
+	           		$.messager.alert('操作提示', "数据保存成功！", 'info');
+	       		}else {
+	       			$.messager.alert('操作提示', "数据保存不成功！", 'warning');
+	       		}
+			}
+			function errorMsg(){
+				$.messager.alert('操作提示', "导入excel出错！", 'warning');
+			}
+ 		}
+		
+	}
+	
+	//JS校验form表单信息
+    function checkData(){
+    	var fileDir = $("#fenMian").filebox('getValue');
+    	var suffix = fileDir.substr(fileDir.lastIndexOf("."));
+    	if("" == fileDir){
+    		$.messager.alert('操作提示', "选择需要导入的Excel文件！", 'warning');
+    		return false;
+    	}
+    	if(".jpg" != suffix && ".jpeg" != suffix && ".gif" != suffix && ".png" != suffix && ".bmp" != suffix ){
+    		$.messager.alert('操作提示', "图片格式不支持，请重新选择！", 'warning');
+    		return false;
+    	}
+    	return true;
+    }
 </script>
 
 <div>
@@ -128,19 +158,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <div id="dlg" class="easyui-dialog" style="width:450px; height:350px; padding: 10px 20px" closed="true" buttons="#dlg-buttons">
 	<div style="line-height: 30px;  border-bottom: 1px solid #ccc;  margin-bottom: 15px;  font-size: 15px;">增加我的博文</div>
+	<form id="importfm" method="post"  enctype="multipart/form-data" novalidate >
 	<table>
 		<tr style="height:35px;">
 			<td><label>标题：</label></td>
-			<td><input type="text" name="majorName" id="majorName" class="easyui-textbox" placeholder="在此填写标题" style="width:300px;"/></td>
+			<td><input type="text" name="title" id="majorName" class="easyui-textbox" placeholder="在此填写标题" style="width:300px;"/></td>
+		</tr>
+		<tr style="height:35px;">
+			<td><label>封面：</label></td>
+			<td><input name="fenMian" id="fenMian" data-options="prompt:'请选择上传图片'" class="easyui-filebox" style="width:300px;"/></td>
 		</tr>
 		<tr>
 			<td><label>正文：</label></td>
-			<td><input type="text" name="majorText" id="majorText" class="easyui-textbox" data-options="multiline:true" style="width:300px; height:100px"/></td>
+			<td><input type="text" name="text" id="majorText" class="easyui-textbox" data-options="multiline:true" style="width:300px; height:100px"/></td>
 		</tr>
 	</table>
+	</form>
 </div>
 <div id="dlg-buttons">
-	<a href="javascript:void(0)" class="easyui-linkbutton" id="saveBean" iconCls="icon-ok" onclick="saveBean()" style="displaly:block;width: 90px">保存</a> 
+	<a href="javascript:void(0)" class="easyui-linkbutton" id="saveBean" iconCls="icon-ok" onclick="submitForm()" style="displaly:block;width: 90px">保存</a> 
 	<a href="javascript:void(0)" class="easyui-linkbutton" id="saveCancel" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">取消</a>
 </div>
 </body>

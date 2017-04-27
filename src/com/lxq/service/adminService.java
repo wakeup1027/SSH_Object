@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.lxq.beans.Inmessges;
 import com.lxq.beans.LifeMotto; 
 import com.lxq.beans.myExperience;
 import com.lxq.beans.myInfo;
@@ -121,6 +122,19 @@ public class adminService<T> {
 		String hql = "FROM myInfo";
 		List<myInfo> orders = this.dao.findByPage(hql, Integer.valueOf(page), Integer.valueOf(rows));
 		Long total = this.dao.count(myInfo.class,hql);
+		map.put("rows", orders);
+	    map.put("total", total);
+	    return map;
+	}
+	
+	/**
+	 * 获取“个人简历”
+	 */
+	public Map<String, Object> showsInmesge(int page, int rows){
+		Map<String, Object> map = new HashMap<String, Object>();
+		String hql = "FROM Inmessges";
+		List<Inmessges> orders = this.dao.findByPage(hql, Integer.valueOf(page), Integer.valueOf(rows));
+		Long total = this.dao.count(Inmessges.class,hql);
 		map.put("rows", orders);
 	    map.put("total", total);
 	    return map;

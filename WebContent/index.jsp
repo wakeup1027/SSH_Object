@@ -16,8 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script src="<%=basePath%>js/jquery-1.8.3.min.js"></script>
 	<script>
 		$(function(){
-			$.post("<%=basePath%>framework/user/getlist.action",{suggest:"你好"},function(res){
-			    console.log(res);
+			$.post("<%=basePath%>framework/user/getlist.action",{},function(res){
 			    var mottoInfo = res.MottoList; 
 			    $("#myMottoTitle").text(mottoInfo.title);
 			    $("#myMottoText").text(mottoInfo.text);
@@ -37,17 +36,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    $(".myInfoTitle").text(myInfo.title);
 			    $(".myInfoContent").text(myInfo.text);
 			    
-			    //myname EnglishName myphone myEmail myAddress myWebsite myMajor myBirthday
+			    var myText = res.MyTextList;
+			    for(var i=0; i<myText.length; i++){
+			    	var divBox = '<div class="post"><img src="<%=basePath%>'+myText[i].imgPath+'" width="50px"/><h4><a href="#">'+myText[i].title+'</a></h4><p>'+fotmateDate(myText[i].creantime)+'</p></div>';
+			    	$("#contentBlog").append(divBox);
+			    }
+			    
 			    var myMessge = res.InmesList;
 			    $("#myname").text("Name："+myMessge.name);
-			    $("#EnglishName").text("EnglishName：U · J");
+			    $("#EnglishName").text("EnglishName："+myMessge.engName);
 			    $("#myphone").text("Phone："+myMessge.phone);
 			    $("#myMajorSchool").text("Major："+myMessge.major);
-			    $("#myEmail").text("Email：532367094@qq.com");
-			    $("#myAddress").text("Address：海南省儋州市白马井镇");
-			    $("#myWebsite").text("Website：lxq2017.imwork.net");
+			    $("#myEmail").text("Email："+myMessge.email);
+			    $("#myAddress").text("Address："+myMessge.address);
+			    $("#myWebsite").text("Website："+myMessge.website);
 			    $("#myBirthday").text("Birthday："+myMessge.birthday);
-			    
+			    $(".lifelang").text(myMessge.lifelang);
 			    var myMajor = res.MyMajor;
 			    for(var i=0; i<myMajor.length; i++){
 				    var li = '<li><a href="javascript:void(0)">'+myMajor[i].majorName+'</a></li>';
@@ -81,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div> -->
 		
 		<div id="logo">
-			<img src="<%=basePath%>images/index_logo.png"/><h2 style="color:#fff;">Never underestimate your power to change yourself !</h2>
+			<img src="<%=basePath%>images/index_logo.png"/><h2 style="color:#fff;" class="lifelang">Never underestimate your power to change yourself !</h2>
 		</div> 
 		
 		<nav>
@@ -161,24 +165,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 					</div>
 					<div class="box">
-						<div class="heading"><h2>Popular Post</h2></div>
-						<div class="content">
-							<div class="post">
-								<img src="images/img4.jpg" width="50px"/>
-								<h4><a href="#">Lorem ipsum dolor sit</a></h4>
-								<p>November 11 ,2012</p>
-							</div>
-							<div class="post">
-								<img src="images/img5.jpg" width="50px"/>
-								<h4><a href="#">Lorem ipsum dolor sit</a></h4>
-								<p>November 11 ,2012</p>
-							</div>
-							<div class="post">
-								<img src="images/img1.jpg" width="50px"/>
-								<h4><a href="#">Lorem ipsum dolor sit</a></h4>
-								<p>November 11 ,2012</p>
-							</div>
-						</div>
+						<div class="heading"><h2>My Blog</h2></div>
+						<div class="content" id="contentBlog"></div>
 					</div>
 				</div>
 			</div>
@@ -220,7 +208,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="box">
 						<div class="heading"><h2>Contact Us</h2></div>
 						<div class="content">
-							<p>Never underestimate your power to change yourself !</p>
+							<p class="lifelang">Never underestimate your power to change yourself !</p>
 							<p id="myname"></p>
 							<p id="EnglishName"></p>
 							<p id="myphone"></p>

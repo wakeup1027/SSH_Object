@@ -21,17 +21,29 @@ public class Inmessges {
 	@Column(name = "name", length=10)
 	private String name;
 	
-	@Column(name = "age", length=5)
-	private String age;
+	@Column(name="EngName", length=50)
+	private String EngName;
+	
+	@Column(name = "Email", length=30)
+	private String Email;
 
 	@Column(name = "birthday", length=15)
 	private String birthday;
+	
+	@Column(name = "Address", length=25)
+	private String Address;
+	
+	@Column(name = "Website", length=100)
+	private String Website;
 	
 	@Column(name = "phone", length=15)
 	private String phone;
 	
 	@Column(name = "major", length=15)
 	private String major;
+	
+	@Column(name = "Lifelang", length=2000)
+	private String Lifelang;
 	
 	public String getId() {
 		return id;
@@ -47,14 +59,6 @@ public class Inmessges {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getAge() {
-		return age;
-	}
-
-	public void setAge(String age) {
-		this.age = age;
 	}
 
 	public String getBirthday() {
@@ -79,6 +83,46 @@ public class Inmessges {
 
 	public void setMajor(String major) {
 		this.major = major;
+	}
+
+	public String getEngName() {
+		return EngName;
+	}
+
+	public void setEngName(String engName) {
+		EngName = engName;
+	}
+
+	public String getEmail() {
+		return Email;
+	}
+
+	public void setEmail(String email) {
+		Email = email;
+	}
+
+	public String getAddress() {
+		return Address;
+	}
+
+	public void setAddress(String address) {
+		Address = address;
+	}
+
+	public String getWebsite() {
+		return Website;
+	}
+
+	public void setWebsite(String website) {
+		Website = website;
+	}
+
+	public String getLifelang() {
+		return Lifelang;
+	}
+
+	public void setLifelang(String lifelang) {
+		Lifelang = lifelang;
 	}
 
 }

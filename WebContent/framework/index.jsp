@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									{"menuname":"我的经历","icon":"icon-add","url":"<%=basePath%>framework/MyExperien.jsp"},
 									{"menuname":"兴趣爱好","icon":"icon-users","url":"<%=basePath%>framework/MyLike.jsp"},
 									{"menuname":"我的博文","icon":"icon-role","url":"<%=basePath%>framework/MyText.jsp"},
-									{"menuname":"个人简介","icon":"icon-pen","url":"demo.html"},
+									{"menuname":"个人简介","icon":"icon-pen","url":"<%=basePath%>framework/MyInmess.jsp"},
 									{"menuname":"关于自己","icon":"icon-set","url":"<%=basePath%>framework/MyInfo.jsp"},
 									{"menuname":"添加专业","icon":"icon-log","url":"<%=basePath%>framework/MyMajor.jsp"}
 								]

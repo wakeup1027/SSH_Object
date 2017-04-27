@@ -32,6 +32,17 @@ public class myText {
 	
 	@Column(name = "creantime")
 	private Timestamp creantime;
+	
+	@Column(name = "imgPath")
+	private String imgPath;
+
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
 
 	public String getId() {
 		return id;
