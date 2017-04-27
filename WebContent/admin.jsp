@@ -2,92 +2,69 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String id = request.getParameter("id");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>欢迎光临_宜春院</title>
+	<title>我的博客</title>
 	<script src="<%=basePath%>js/jquery-1.8.3.min.js"></script>
 	<script>
 		$(function(){
-			$("#submitBtn").click(function(){
-				$.ajax({
-					url:"<%=basePath%>framework/user/add.action", 
-					type:"post",
-					data:{
-						"userName":$("#userName").val(),
-						"age":$("#age").val()	
-					},
-					dataType:"json",
-					success:function(data){
-						console.log(data);
-					},
-					error:function(e){
-						console.error(e);
-					}
-				});
-			});	
-			
-			$("#deleteBtn").click(function(){
-				$.ajax({
-					url:"<%=basePath%>framework/user/delet.action", 
-					type:"post",
-					data:{
-						"id":"402880ea5b0db477015b0db52ac30000"
-					},
-					dataType:"json",
-					success:function(data){
-						console.log(data);
-					},
-					error:function(e){
-						console.error(e);
-					}
-				});
+			$.post("<%=basePath%>framework/user/findOne.action",{id:"<%=id%>"},function(res){
+				$("#titleBox").text(res.title);
+				$("#creamTime").text(fotmateDate(res.creantime));
+				$("#textBox").text(res.text);
 			});
-			
 		});
 		
-		function ajax() {
-	          //先声明一个异步请求对象
-	          var xmlHttpReg = null;
-	          if (window.ActiveXObject) {//如果是IE
-	              xmlHttpReg = new ActiveXObject("Microsoft.XMLHTTP");
-	          } else if (window.XMLHttpRequest) {
-	              xmlHttpReg = new XMLHttpRequest(); //实例化一个xmlHttpReg
-	          }
+		function fotmateDate(value){
+			var dateStr = "";
+			if(value=="undefined"||value=="null"||value==null){}else{
+				var date = new Date(value);
+				dateStr = date.format("yyyy-MM-dd");
+			}
+		    return dateStr;    
+		}
 
-	          //如果实例化成功,就调用open()方法,就开始准备向服务器发送请求
-	          if (xmlHttpReg != null) {
-	              xmlHttpReg.open("get", "<%=basePath%>framework/user/add.action?userName=\"asdasd\"&age=\"1111\"", true);
-	              xmlHttpReg.send(null);
-	              xmlHttpReg.onreadystatechange = doResult; //设置回调函数
-	          }
-
-	          //回调函数
-	          //一旦readyState的值改变,将会调用这个函数,readyState=4表示完成相应
-
-	          //设定函数doResult()
-	          function doResult() {
-	              if (xmlHttpReg.readyState == 4) {//4代表执行完成
-	                  if (xmlHttpReg.status == 200) {//200代表执行成功
-	                      //将xmlHttpReg.responseText的值赋给ID为resText的元素
-	                      document.getElementById("resText").innerHTML = xmlHttpReg.responseText;
-	                  }
-	              }
-	          }
-	        
-
-	      }
+		//js格式化日期插件代码
+		Date.prototype.format = function (format) {  
+				 var o = {  
+				        "M+": this.getMonth() + 1, // month  
+				        "d+": this.getDate(), // day  
+				        "H+": this.getHours(), // hour  
+				        "m+": this.getMinutes(), // minute  
+				        "s+": this.getSeconds(), // second  
+				        "q+": Math.floor((this.getMonth() + 3) / 3), // quarter  
+				        "S": this.getMilliseconds()  
+				        // millisecond  
+				 }
+				 if (/(y+)/.test(format)){
+				        format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length)); 
+				 } 
+				 for (var k in o){  
+				      if (new RegExp("(" + k + ")").test(format)){
+				            format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length)); 
+				 	  }
+				 } 
+				 return format;  
+		}
 	</script>
 </head>
-<body>
-	<input type="text" id="userName"/>
-	<input type="text" id="age"/>
-	<button id="submitBtn">提交</button>
-	<button id="deleteBtn">删除</button>
-	<input type="button" value="get请求http协议获取返回的数值"  onclick="ajax();"/>
-	<div id="resText"></div>
-	<h1>请登录。。。</h1>
+<body style="background-color:#999999;">
+	<div style="background: #ffffff;  margin: 30px auto;  padding: 30px; width:960px;">
+		<div class="titleBox" id="titleBox" style="text-align:center; font-size:18px; font-weight:bold; margin-top:30px;">开始的缴费号司打口分行是卡迪夫客户</div>
+		<div style="color:#999; font-size:14px; text-align:center; margin-top:10px;">
+			<div style="width:306px; margin-left:auto; margin-right:auto;">
+				<div style="float:left; width:150px;"><label>创建时间：</label><span id="creamTime">2017-05-12</span></div>
+				<div style="float:left; width:140px; margin-left:15px;"><label>博客来源：</label><span>李向前</span></div>
+				<div style="clear:both;"></div>
+			</div>
+		</div>
+		<div id="textBox" style="width:800px; margin:auto; padding-bottom:100px; font-size:14px; color:#666; line-height:25px; text-indent:2em; margin-top:30px;">
+			看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫看好谁看见的符合深刻的积分换开始地方会计师的发挥看水电费卡机的回复阿斯顿发客户卡收到货放假啊是的反馈哈士大夫
+		</div>
+	</div>
 </body>
 </html>

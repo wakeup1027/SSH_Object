@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    
 			    var myText = res.MyTextList;
 			    for(var i=0; i<myText.length; i++){
-			    	var divBox = '<div class="post"><img src="<%=basePath%>'+myText[i].imgPath+'" width="50px"/><h4><a href="#">'+myText[i].title+'</a></h4><p>'+fotmateDate(myText[i].creantime)+'</p></div>';
+			    	var divBox = '<div class="post"><img src="<%=basePath%>'+myText[i].imgPath+'" width="50px"/><h4><a href="<%=basePath%>admin.jsp?id='+myText[i].id+'">'+myText[i].title+'</a></h4><p>'+fotmateDate(myText[i].creantime)+'</p></div>';
 			    	$("#contentBlog").append(divBox);
 			    }
 			    

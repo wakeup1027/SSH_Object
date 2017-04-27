@@ -67,4 +67,10 @@ public class InmessgesController {
 		map.put("MyTextList", MyTextList); //获取博文信息
 		return map;
 	}
+	
+	@RequestMapping(value = "/findOne.action", method = RequestMethod.POST)
+	@ResponseBody
+	public myText findOne(String id){
+		return userser.TextDalit(id);
+	}
 }

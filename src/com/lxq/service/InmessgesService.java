@@ -95,6 +95,14 @@ public class InmessgesService {
 	}
 	
 	/**
+	 * 获取到单个博文新闻详情
+	 */
+	public myText TextDalit(String id){
+		List<myText> list = dao.find("FROM myText WHERE id='"+id+"'");
+		return list.get(0);
+	}
+	
+	/**
 	 * 我的经历
 	 */
 	public myExperience listExper(){
